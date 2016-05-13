@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>RPM Packaging &mdash; Fedora Developer Portal</title>
+  <meta name="description" content="Fedora Developer Portal provides information for developers running  Fedora on their workstation or virtual machines.
+">
+
+  <link rel="canonical" href="http://developer.fedoraproject.org/deployment/rpm/about.html">
+
+  <!-- Link to Sitemap -->
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="../../sitemap.xml" />
+
+  <link href="../../css/main.css" rel="stylesheet" media="screen, print">
+  <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+
+  <!-- Site search -->
+  <script src="../../js/search.min.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript">
+    $(function() {
+      $('#search-query').lunrSearch({
+        indexUrl: '/js/index.json',   // Url for the .json file containing search index data
+        results : '#search-results',  // selector for containing search results element
+        entries : '.entries',         // selector for search entries containing element (contained within results above)
+        template: '#search-results-template'  // selector for Mustache.js template
+      });
+    });
+  </script>
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-69605821-1', 'auto');
+    ga('send', 'pageview');
+  
+  </script>
+</head>
+
+  <body>
+  <div style="background-color: #333">
+<div class="container">
+<div style="margin-bottom: 6px; margin-top: 6px" class="alert alert-warning">
+<span class="pficon pficon-warning-triangle-o"></span>
+  <strong> This is a development server. </strong>
+  See the <a href="https://fedoraproject.org/wiki/Websites/Developer"> project wiki </a> for more information or visit the <b><a href="https://developer.fedoraproject.org"> Fedora Developer Portal</a></b> itself.
+</div>
+</div>
+</div>
+
+
+    <!-- The top blue thing -->
+    <div id="splash" class="splash-size-small splash-section-deploy">
+      <div class="container">
+        <div class="row" id="top">
+  <div class="col-sm-2" id="logo-col">
+    <div class="text-center">
+      <h1>
+        <a href="../../index.html">
+          <img src="../../static/logo_white.png" style="height: 46px; width: 152px;">
+          <span>Fedora Developer Portal</span>
+        </a>
+      </h1>
+    </div>
+  </div>
+  <div class="col-sm-7" id="menu-col">
+    <nav>
+  <ul class="nav navbar-nav">
+    <li class="">
+      <a href="../../start.html">Start a project</a>
+    </li>
+    <li class="">
+      <a href="../../tools.html">Get tools</a>
+    </li>
+    <li class="">
+      <a href="../../tech.html">Languages &amp; databases</a>
+    </li>
+    <li class=" active ">
+      <a href="../../deployment.html">Deploy and distribute</a>
+    </li>
+    <!--
+    <li class="">
+      <a href="/">Resources</a>
+    </li>
+    <li class="">
+      <a href="/">Blogs</a>
+    </li>
+    -->
+  </ul>
+</nav>
+
+  </div>
+  <div class="col-sm-3" id="search-col">
+    
+  <form class="input-group" id="search" action="http://127.0.0.1:4000/search.html" method="get">
+    <input type="text" id="search-query" class="form-control" name="q" placeholder="Search" autocomplete="off">
+    <span class="input-group-btn">
+      <button class="btn btn-default glyphicon glyphicon-search" type="submit" aria-hidden="true"></button>
+    </span>
+  </form>
+  <section id="search-results" style="display: none;">
+    <div class="entries">
+    </div>
+  </section>
+
+  
+  <script id="search-results-template" type="text/mustache">
+    {{#entries}}
+      <article>
+        <a href="http://127.0.0.1:4000/deployment/rpm/{{url}}">{{title}}</a>
+      </article>
+    {{/entries}}
+  </script>
+  
+
+
+  </div>
+</div>
+
+        <div class="row" id="headlines">
+  <div class="col-sm-12">
+
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <img class="img-rounded" src="../../static/logo/rpm.png">
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <h2>RPM Packaging</h2>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <p>How to package your application and ship it to RPM based systems.
+</p>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+<div class="row" id="attribution">
+  <div class="col-sm-12">
+    <a href="https://www.flickr.com/photos/gsfc/5890869490/">Minotaur Rocket Launch at NASA Wallops by NASA Goddard Space Flight Center on Flickr, CC-BY-2.0</a>
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="list-group content-menu">
+            
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                
+                <a href="about.html" class="list-group-item  active ">RPM Packaging</a>
+                
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-body" style="padding-top:8px;padding-bottom:8px">
+              <div id="ask-fedora">
+  Have a question?
+  
+    <a href="http://ask.fedoraproject.org/">Ask Fedora.</a>
+  
+</div>
+
+            </div>
+          </div>
+
+          <a href="https://github.com/developer-portal/content/blob/master//deployment/rpm//about.md" class="btn btn-default">Edit this page</a>
+
+        </div>
+        <div class="col-sm-9">
+          <div class="panel panel-default content-content">
+            
+            <h1 id="rpm-packaging">RPM Packaging</h1>
+
+<p>How to package your application and ship it to RPM based systems.</p>
+
+<p>Biggest advantages of packaging your application is:</p>
+
+<ul>
+  <li>it puts together code, data, config files and post-installations scripts.</li>
+  <li>the package can be signed, therefore clients can verify that the package was not altered.</li>
+  <li>it standardize installation paths.</li>
+  <li>it describes requirements, which are automatically resolved by system.</li>
+  <li>it allows easy installation/upgrade/removal of your application.</li>
+</ul>
+
+<h2 id="setup">Setup</h2>
+
+<p>Run:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo dnf install fedora-packager rpmdevtools
+<span class="gp">$ </span>rpmdev-setuptree
+<span class="gp">$ </span><span class="nb">cd</span> ~/rpmbuild/SOURCES
+<span class="gp">$ </span>wget http://ftp.gnu.org/gnu/hello/hello-2.8.tar.gz
+<span class="gp">$ </span><span class="nb">cd</span> ~/rpmbuild/SPECS
+<span class="gp">$ </span>rpmdev-newspec --macros hello.spec
+</code></pre>
+</div>
+
+<h2 id="quick-start-guide">Quick Start Guide</h2>
+
+<p>Now you can open hello.spec file and alter it. Put there this content:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Name:     hello
+Version:  2.8
+Release:  1%{?dist}
+Summary:  The "Hello World" program from GNU
+License:  GPLv3+
+URL:      http://ftp.gnu.org/gnu/hello
+Source0:  http://ftp.gnu.org/gnu/hello/hello-2.8.tar.gz
+
+BuildRequires: gettext
+
+Requires(post): info
+Requires(preun): info
+
+%description
+The "Hello World" program, done with all bells and whistles of a proper FOSS
+project, including configuration, build, internationalization, help files, etc.
+
+%prep
+%autosetup
+
+%build
+%configure
+make %{?_smp_mflags}
+
+%install
+%make_install
+%find_lang %{name}
+rm -f %{buildroot}/%{_infodir}/dir
+
+%post
+/sbin/install-info %{_infodir}/%{name}.info %{_infodir}/dir || :
+
+%preun
+if [ $1 = 0 ] ; then
+/sbin/install-info --delete %{_infodir}/%{name}.info %{_infodir}/dir || :
+fi
+
+%files -f %{name}.lang
+%{_mandir}/man1/hello.1.*
+%{_infodir}/hello.info.*
+%{_bindir}/hello
+
+%doc AUTHORS ChangeLog NEWS README THANKS TODO
+%license COPYING
+
+%changelog
+* Tue Sep 06 2011 The Coon of Ty &lt;Ty@coon.org&gt; - 2.8-1
+- Initial version of the package
+</code></pre>
+</div>
+
+<p>Once you are done, you can run:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>rpmbuild -ba hello.spec
+</code></pre>
+</div>
+
+<p>Your package should be ready at <code class="highlighter-rouge">~/rpmbuild/RPMS/x86_64/hello-2.8-1.x86_64.rpm</code>.</p>
+
+<p>This example is taken from <a href="https://fedoraproject.org/wiki/How_to_create_a_GNU_Hello_RPM_package">How to create a GNU Hello RPM package</a>. You can follow it there.</p>
+
+<h3 id="resources">Resources</h3>
+
+<p>You can learn more about all sections and tags of SPEC file at <a href="https://fedoraproject.org/wiki/How_to_create_an_RPM_package">Fedora documentation “How to create and RPM package”</a>.</p>
+
+<p>If you prefer video over wiki, you can check recording of <a href="http://youtu.be/H4vxkuoimzc">Packaging Workshop</a> at YouTube. Red Hat subscribers can check <a href="https://access.redhat.com/videos/214983">Getting Started with RPMs</a> video.</p>
+
+<h2 id="packaging-for-other-distribution">Packaging for other distribution</h2>
+
+<p>Command rpmbuild creates package only for architecture and distribution of your own workstation. If you want to create RPM for other distribution and other architecture, you need to use <a href="https://fedoraproject.org/wiki/Mock">Mock</a>. It can build packages for different architectures and different Fedora or RHEL versions than the build host has. Mock creates chroots and builds packages in them. Its only task is to reliably populate a chroot and attempt to build a package in that chroot.</p>
+
+<h3 id="setup-1">Setup</h3>
+
+<p>Run:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo dnf install mock mock-scm
+<span class="gp">$ </span>sudo usermod -a -G mock YourUserName
+<span class="gp">$ </span>newgrp mock
+</code></pre>
+</div>
+
+<h3 id="building-package-using-mock">Building package using Mock</h3>
+
+<p>Before you start using Mock, you have to have SRC.RPM (also called SRPM). You can create it using rpmbuild:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>rpmbuild -bs hello.spec
+</code></pre>
+</div>
+
+<p>Then you can run:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>mock -r epel-7-i386.cfg hello.src.rpm
+</code></pre>
+</div>
+
+<p>This creates CentOS/RHEL package for i386 architecture even when your workstation architecture is x86_64 and your workstation is e.g. Fedora. List of available configurations can be found at <code class="highlighter-rouge">/etc/mock/</code> directory.</p>
+
+<p>You can create RPM directly from git (or any other SCM) using mock-scm plugin. Just try:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>mock -r fedora-22-x86_64 --scm-enable --scm-option <span class="nv">method</span><span class="o">=</span>git --scm-option <span class="nv">package</span><span class="o">=</span>PKG --scm-option <span class="nv">git_get</span><span class="o">=</span><span class="nb">set</span> --scm-option <span class="nv">spec</span><span class="o">=</span>YOUR.SPEC --scm-option <span class="nv">branch</span><span class="o">=</span>master --scm-option <span class="nv">write_tar</span><span class="o">=</span>True --scm-option <span class="nv">git_get</span><span class="o">=</span><span class="s1">'git clone git@git_ip_address:SCM_PKG.git SCM_PKG'</span>
+</code></pre>
+</div>
+
+<p>You can find more details in <a href="https://fedoraproject.org/wiki/Projects/Mock/Plugin/Scm">mock-scm documentation</a>.</p>
+
+<p>More detailed tutorial can be found on page <a href="https://fedoraproject.org/wiki/Using_Mock_to_test_package_builds">Using Mock to test package builds</a></p>
+
+<h3 id="create-yumdnf-repository">Create Yum/Dnf repository</h3>
+
+<p>Once you have your RPM packages ready, you can put them in a directory (one directory per distribution-architecture) and run there:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo dnf install createrepo_c
+<span class="gp">$ </span><span class="nb">cd </span>where_are_your_packages/
+<span class="gp">$ </span>createrepo_c --deltas --retain-old-md 1 ./
+</code></pre>
+</div>
+
+<p>This will create Yum/Dnf repository. When you expose it to web and provide a link to it to users, they can use it as baseurl in a repo file (stored in /etc/yum.repos.d/), like:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[myproject]
+name=Your application
+baseurl=http://yourdomain.com/repository/
+enabled=1
+</code></pre>
+</div>
+
+<p>Note: If you are building an open-source software package, you can use <a href="../copr/about.html">Copr service</a>, which automates <code class="highlighter-rouge">mock</code> and <code class="highlighter-rouge">createrepo_c</code> part while it provides nice WebUI.</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Some other stuff -->
+    <div class=" banner-contribute">
+  <div class="container">
+    <h2> Share your knowledge </h2>
+    <p> Fedora Developer Portal is a community effort to share guides and information about open-source development. And we need your help! </p>
+    <a href="http://developer-portal.github.io/contributing/" class="btn btn-primary">Learn how to contribute</a>
+  </div>
+</div>
+
+    <footer class="footer">
+  <div class="container">
+    <div class="row footerlinks">
+      <div class="col-sm-3 col-xs-6 widget">
+        <h3 class="widget-title">About</h3>
+        <div class="widget-body">
+          <dl>
+            <dd><a href="../../about.html">About Developer Portal</a></dd>
+            <dd><a href="http://getfedora.org/en/sponsors">About Fedora</a></dd>
+            <dd><a href="http://getfedora.org/en/sponsors">Sponsors</a></dd>
+            <dd><a href="http://fedoramagazine.org">Fedora Magazine</a></dd>
+            <dd><a href="http://fedoraproject.org/wiki/Legal:Main#Legal">Legal</a></dd>
+          </dl>
+          <ul class="list-inline">
+            <li>
+              <a class="btn-social btn-outline" href="http://www.facebook.com/TheFedoraProject"><i class="fa fa-fw fa-facebook"></i></a>
+            </li>
+            <li>
+              <a class="btn-social btn-outline" href="http://plus.google.com/112917221531140868607"><i class="fa fa-fw fa-google-plus"></i></a>
+            </li>
+            <li>
+              <a class="btn-social btn-outline" href="http://twitter.com/fedora"><i class="fa fa-fw fa-twitter"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-sm-3 col-xs-6 widget">
+        <h3 class="widget-title uppercase">Download</h3>
+        <div class="widget-body">
+          <dl>
+            <dd><a href="http://getfedora.org/en/workstation/download">Get Fedora Workstation</a></dd>
+            <dd><a href="http://getfedora.org/en/server/download">Get Fedora Server</a></dd>
+            <dd><a href="http://getfedora.org/en/cloud/download">Get Fedora Cloud</a></dd>
+            <dd><a href="http://spins.fedoraproject.org/">Fedora Spins</a></dd>
+            <dd><a href="http://labs.fedoraproject.org/">Fedora Labs</a></dd>
+            <dd><a href="http://arm.fedoraproject.org/">Fedora ARM<span class="sup">&reg;</span></a></dd>
+            <dd><a href="http://torrents.fedoraproject.org">Torrent Downloads</a></dd>
+          </dl>
+        </div>
+      </div>
+      <div class="col-sm-3 col-xs-6 widget">
+        <h3 class="widget-title">Support</h3>
+          <div class="widget-body">
+            <dl>
+              <dd><a href="http://fedoraproject.org/wiki/Communicating_and_getting_help">Get Help</a></dd>
+              <dd><a href="http://ask.fedoraproject.org/">Ask Fedora</a></dd>
+              <dd><a href="http://fedoraforum.org/">Forums</a></dd>
+              <dd><a href="http://fedoraproject.org/wiki/Common_F22_bugs">Common Bugs</a></dd>
+              <dd><a href="http://docs.fedoraproject.org/en-US/Fedora/22/html/Installation_Guide">Installation Guide</a></dd>
+            </dl>
+          </div>
+        </div>
+        <div class="col-sm-3 col-xs-6 widget">
+          <h3 class="widget-title">Join</h3>
+            <div class="widget-body">
+            <dl>
+              <dd><a href="http://fedoraproject.org/wiki/Join">Join Fedora</a></dd>
+              <dd><a href="http://fedoraplanet.org">Planet Fedora</a></dd>
+              <dd><a href="http://fedoraproject.org/wiki/SIGs">Fedora SIGs</a></dd>
+              <dd><a href="http://admin.fedoraproject.org/accounts/">Fedora Account System</a></dd>
+              <dd><a href="http://fedoracommunity.org/">Fedora Community</a></dd>
+            </dl>
+          </div>
+        </div>
+      </div> <!-- /row of widgets -->
+      <div class="row">
+        <div class="col-md-2">
+          <div class="widget-body">
+            <a href="http://www.redhat.com/"><img alt="Red Hat Logo" src="../../static/logo/redhat.png" class="rh-logo"></a>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="widget-body">
+            <p class="sponsor">Fedora is sponsored by Red Hat.</p>
+            <p class="sponsor"><a href="http://www.redhat.com/en/technologies/linux-platforms/articles/relationship-between-fedora-and-rhel">Learn more about the relationship between Red Hat and Fedora »</a></p>
+            <p class="copy">&copy; 2015 Red Hat, Inc. and others.</p>
+          </div>
+        </div>
+        <!-- /row of widgets -->
+      </div>
+</footer>
+
+  </body>
+</html>
